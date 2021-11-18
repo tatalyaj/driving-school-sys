@@ -1,0 +1,28 @@
+﻿<Window x:Class="PLWPF.ManagerOptions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="ManagerOptions" Height="300" Width="300">
+    <Window.Background>
+        <ImageBrush ImageSource="images/Manager.jpg"/>
+    </Window.Background>
+    <Grid>
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Margin="70,41,0,0" VerticalAlignment="Top" Width="155"/>
+
+        <Label Content="Password: " HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Segoe UI Black" RenderTransformOrigin="0.516,1" Height="36" Width="135" FontSize="20"/>
+        <Button Name="LogIn" Content="Log In" HorizontalAlignment="Left" Margin="111,64,0,0" VerticalAlignment="Top" Width="75" Click="LogIn_Click">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PasswordBox, Path=Text}">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

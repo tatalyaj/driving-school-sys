@@ -1,0 +1,185 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.TraineeWindow"
+        mc:Ignorable="d"
+        Title="Trainee Options" Height="549.587" Width="288.701" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="TraineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee} , CreateList=True}" />
+        <!--NEED TO ADD THE KEY-->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Margin="0,0,0.2,3.8">
+                            <Ellipse Fill="WhiteSmoke"
+                             Stroke="black"/>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="images/Trainee.jpg"/>
+    </Window.Background>
+    <Grid Margin=" 0,0,3.2,0.2">
+        <TabControl HorizontalAlignment="Left" Background="Transparent" Height="520" VerticalAlignment="Top" Width="280" Margin="0,0,-0.8,-0.2">
+            <TabItem Header="Add" FontFamily="Yu Gothic UI Semibold">
+                <Grid>
+                    <Grid x:Name="Addgrid1" VerticalAlignment="Top" Margin="0,0,0.4,-25.4" Height="447" >
+                        <!--THE ROWS OF EVERYTHING_PROPERTY<NOT INCLUDING ADRESS+2 ROWS-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="17.2"/>
+                            <RowDefinition Height="5.467"/>
+                            <RowDefinition Height="12.133"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="22.4"/>
+                            <RowDefinition Height="30.4"/>
+                        </Grid.RowDefinitions>
+
+                        <!--colomns -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="76.933"/>
+                            <ColumnDefinition Width="31.067"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--sixth row second column-->
+                        <Label VerticalAlignment="center" Grid.Row="3" Margin="3,4.8,0,4.4" HorizontalAlignment="Left" Grid.Column="0" Content=" Birth Date:" Height="26" Width="69" Foreground="#FFF9F4F4" FontFamily="Yu Gothic UI Semibold"/>
+                        <DatePicker x:Name="birthDayDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateOfBirth, Mode=TwoWay , NotifyOnValidationError=True, ValidatesOnExceptions=true}" Grid.Row="3" HorizontalAlignment="Left" Grid.Column="2" Margin="0,4.8,0,6.4" Height="24" Width="102" FontStyle="Italic" />
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,5.4,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Trainee Gender:" Height="25" Width="93" Grid.ColumnSpan="2" Foreground="#FFFCFAFA" FontFamily="Yu Gothic UI Semibold"/>
+                        <ComboBox x:Name="genderTraineeComboBox" Width=" 120" VerticalAlignment="Center" SelectedItem="{Binding GenderTrainee}" Grid.Row="5" Margin="3,5.4,0,6" Height="23" HorizontalAlignment="Left" Grid.Column="2"/>
+                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,6,0,5.8" HorizontalAlignment="Left" Grid.Column="0" Content="Has Tester:" Height="25" Width="67" Foreground="#FFF9EFEF" FontFamily="Yu Gothic UI Semibold"/>
+                        <CheckBox x:Name="hasTesterCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3,11,0,10.8" IsChecked="{Binding HasTeser, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" HorizontalAlignment="Left" Grid.Column="2" Content="" Height="15" Width="20"/>
+                        <Label VerticalAlignment="Center" Margin="3,5,0,5.8" HorizontalAlignment="Left" Grid.Column="0" Content="*Id:" Grid.Row="0" Height="26" Width="27" Background="{x:Null}" Foreground="#FFFDF9F9" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="idTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Margin="3,6,0,7.8" Height="23" HorizontalAlignment="Left" Grid.Column="2"  Grid.Row="0"/>
+
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,6.2,0,6.2" HorizontalAlignment="Left" Grid.Column="0" Content="Name" Grid.RowSpan="2" Height="26" Width="42" Foreground="#FFFCF2F2" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="nameTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="1" Margin="3,11.2,0,9.2" HorizontalAlignment="Left" Grid.Column="2" Grid.RowSpan="2" Height="18"/>
+                        <Label VerticalAlignment="Center" Grid.Row="7" Margin="3,6.2,0,5.8" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number" Grid.RowSpan="3" Height="24" Width="91" Grid.ColumnSpan="2" Foreground="#FFF3EAEA" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="phoneNumberTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="7" Margin="3,10.2,0,9.8" HorizontalAlignment="Left" Grid.Column="2" Grid.RowSpan="3" Height="16" />
+                        <Label VerticalAlignment="Center" Grid.Row="10" Margin="3,6.2,0,4.8" HorizontalAlignment="Left" Grid.Column="0" Content="Car Learned:" Height="25" Width="75" Grid.ColumnSpan="2" Foreground="#FFFDF7F7" FontFamily="Yu Gothic UI Semibold"/>
+                        <ComboBox x:Name="carLearnedComboBox" Width ="120" VerticalAlignment="Center" Text="{Binding CarLearnedType , Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Grid.Row="10" Margin="3,7.2,0,5.8" Height="23" HorizontalAlignment="Left" Grid.Column="2"/>
+                        <Label VerticalAlignment="Center" Grid.Row="11" Margin="3,6.2,0,34.2" HorizontalAlignment="Left" Grid.Column="0" Content="Gear Box Type:" Height="30" Width="93" Grid.ColumnSpan="2" Foreground="#FFFCF9F9" Grid.RowSpan="2" FontFamily="Yu Gothic UI Semibold"/>
+                        <ComboBox x:Name="gearBoxTypeComboBox" Width ="Auto" VerticalAlignment="Center" Text="{Binding  GearBox , Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Grid.Row="11" Margin="3,7.2,4,5.8" Height="23" HorizontalAlignment="Stretch" Grid.Column="2"/>
+                        <Label VerticalAlignment="Center" Grid.Row="12" Margin="3,5.2,0,4.2" HorizontalAlignment="Left" Grid.Column="0" Content="Name Of School:" Height="25" Width="99" Grid.ColumnSpan="2" Foreground="#FFF3EDED" FontFamily="Yu Gothic UI Semibold" />
+                        <TextBox x:Name="nameOfSchoolTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding NameOfschool, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="12" Margin="3,9.2,0,8.2" HorizontalAlignment="Left" Grid.Column="2" Height="17"/>
+                        <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,4.8,0,3.4" HorizontalAlignment="Left" Grid.Column="0" Content="Name Of Teacher:" Height="27" Width="104" Grid.ColumnSpan="2" Foreground="#FFFDF5F5" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="nameOfTeacherTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding TeacherName, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="13" Margin="3,9.8,0,8.4" HorizontalAlignment="Left" Grid.Column="2" Height="17" />
+                        <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,33.8,0,28.2" HorizontalAlignment="Left" Grid.Column="0" Content="Num Of Lessons:" Height="26" Grid.RowSpan="3" Width="99" Grid.ColumnSpan="2" Foreground="#FFFCF4F4" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="numOfLessonsTextBox" Width=" 120" VerticalAlignment="Center" Text="{Binding NumOfLessons, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="14" Margin="3,1.6,0,2.8" HorizontalAlignment="Left" Grid.Column="2" Height="18" />
+                        <Label VerticalAlignment="Center" Grid.Row="15" Margin="3,6,0,6" HorizontalAlignment="Left" Grid.Column="0" Content="Adress:" Height="26" Width="77" Foreground="#FFF3E2E2" FontFamily="Yu Gothic UI Semibold"/>
+                        <TextBox x:Name="adressStreetTextBox" VerticalAlignment="Stretch" Text="{Binding TraineeAdress , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="15" Margin="70,7.2,100.6,7.2" HorizontalAlignment="Stretch" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="adressOfBuildingTextBox" VerticalAlignment="Stretch" Text="{Binding TraineeAdress , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="15" Margin="65.4,7.2,-21.4,7.2" HorizontalAlignment="Stretch" Grid.Column="2"/>
+                        <TextBox x:Name="adressCityTextBox" VerticalAlignment="Stretch" Text="{Binding TraineeAdress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="15" Margin="29.4,7.2,63.6,7.2" HorizontalAlignment="Stretch" Grid.Column="2"/>
+                        <Label VerticalAlignment="Center" Grid.Row="15" Margin="0,33.2,0,-27" HorizontalAlignment="Left" Grid.Column="0" Content="Payed :" Height="25" Width="94" Foreground="#FFF9EFEF" FontFamily="Yu Gothic UI Semibold" Grid.ColumnSpan="2"/>
+                        <CheckBox x:Name="payedOrNotCheckBox" VerticalAlignment="Center" Grid.Row="15" Margin="31.4,39.2,0,-23" IsChecked="{Binding PayedOrNot, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="15" Width="20" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Button Name="Add" Content="Add" HorizontalAlignment="Right"  Margin="0,461,0.4,-37.6" VerticalAlignment="Top" Width="84" Height="27" Click="Add_Click" FontFamily="Yu Gothic UI Semibold" >
+                        <Button.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=nameTextBox,Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value=" false"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=idTextBox,Path=Text}" Value=" ">
+                                        <Setter Property="Button.IsEnabled" Value=" false"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Update" FontFamily="Yu Gothic UI Semibold">
+                <Grid Height=" 370" Margin=" 3,3,0.4,0" VerticalAlignment="Top">
+                    <Grid x:Name="updategrid2" Margin="0,10,3,-50" Height="410" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=" Auto"/>
+                            <ColumnDefinition Width=" Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=" Auto"/>
+                            <RowDefinition Height=" Auto"/>
+                            <RowDefinition Height=" Auto"/>
+                            <RowDefinition Height=" Auto"/>
+                            <RowDefinition Height=" Auto"/>
+                            <RowDefinition Height=" Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Birth Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="#FFF7EFEF"/>
+                        <DatePicker x:Name="birthDateDatePicker1" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding BirthDate, Mode=TwoWay , NotifyOnValidationError=True,ValidatesOnExceptions=True}" VerticalAlignment="Center"/>
+                        <Label Content="Gender Trainee:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" Foreground="#FFF9F7F7"/>
+                        <ComboBox x:Name="gendertraineeComboBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" SelectedItem="{Binding GenderTrainee}" VerticalAlignment="Center" Width="120" />
+                        <Label Content="Has Tester:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,17,0,46.6" Grid.Row="5" VerticalAlignment="Center" Foreground="#FFF7F4F4"/>
+                        <CheckBox x:Name="hasTesterCheckBox1" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding HasTester, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" Margin="15.6,29,0,47.2" Grid.Row="5" VerticalAlignment="Center"/>
+                        <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" Foreground="#FFF9ECEC"/>
+                        <TextBox x:Name="nameTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="5,53,0,9.8" HorizontalAlignment="Left" Grid.Column="0" Content="Num Of Lessons:" Height="26" Width="99" Foreground="#FFFAF1F1"/>
+                        <TextBox x:Name="numOfLessonsTextBox1" Width=" 120" VerticalAlignment="Center" Text="{Binding NumOfLessons, Mode=TwoWay, NotifyOnValidationError=True,ValidatesOnExceptions=True}" Grid.Row="5" Margin="3.6,58,0,14.4" HorizontalAlignment="Left" Grid.Column="1" Height="18" />
+                        <Label Content="Trainee To Update:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Foreground="#FFFDF9F9"/>
+                        <ComboBox x:Name="updateidComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0.4,6,0,3.8"  SelectedItem="{Binding ID,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}" VerticalAlignment="Center" Width="120" SelectionChanged="updateidComboBox_SelectionChanged_1" />
+                    </Grid>
+                    <Button Name="Update" Content=" Update " HorizontalAlignment="Left" Margin="177,323,0,0" VerticalAlignment="Top" Width=" 84" Height="27" Click="Update_Click">
+                        <Button.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=nameTextBox1, Path=Text}"  Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header=" Remove" FontFamily="Yu Gothic UI Semibold">
+                <Grid>
+                    <Grid x:Name="grid3" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Height="386" Width="264">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="-6,32.8,0,-22.8" Grid.Row="4" VerticalAlignment="Center" Foreground="#FF33A8D3"/>
+                        <ComboBox x:Name="removeidComboBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding }" Margin="23,35.8,-90.4,-22.8" Grid.Row="4" VerticalAlignment="Center" Width="221"  Grid.ColumnSpan="2">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                    </Grid>
+                    <Label Content=" which trainee do you want to remove" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Width=" 254" Foreground="#FF25C2D1" FontFamily="Showcard Gothic" FontSize="11"/>
+                    <Button Style="{StaticResource ButtonStyle}" Name="Remove" Content="Remove" HorizontalAlignment="Left" Margin="93,112,0,0" VerticalAlignment="Top" Width=" 84" Click="Remove_Click" Height=" 27"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

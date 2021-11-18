@@ -1,2 +1,2 @@
 # driving-school-sys
-driving school system 
+A driving school system WPF design 
